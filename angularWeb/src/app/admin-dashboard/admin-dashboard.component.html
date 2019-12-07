@@ -1,0 +1,132 @@
+<nav class="navbar navbar-dark bg-dark py-3 mb-5 d-flex flex-row-reverse">
+  <button class="btn btn-danger my-sm-0" (click)="logout()">Logout</button>
+</nav>
+
+<div class="container col-12 col-md-8 mt-3 px-0 size-container-table">
+  <div class="d-flex justify-content-between mt-2">
+    <div>
+      <button
+        class="btn btn-secondary"
+        type="button"
+        (click)="openNewUserForm()"
+      >
+        Insert
+      </button>
+      <post-students-form
+        *ngIf="openEditInsertForm.openInsertForm"
+        (onSubmit)="insertUser($event)"
+        (onSubmit)="insertGrades($event)"
+      ></post-students-form>
+    </div>
+    <input
+      type="text"
+      placeholder="Seach A Student"
+      [(ngModel)]="searchText"
+      name="searchText"
+      class="form-control mx-1 mb-3 p-2 col-8 col-md-8"
+    />
+    <div></div>
+  </div>
+
+  <update-student-form
+    [insertValuesUpdate]="insertValuesToUpdateForm"
+    *ngIf="openEditInsertForm.openUpdateForm"
+    (onSubmit)="update($event)"
+  ></update-student-form>
+  <table
+    class="table table-responsive-sm table-striped table-bordered table-dark"
+    style="width: 100%"
+  >
+    <thead>
+      <tr class="bg-info">
+        <th
+          [class.active]="order === 'students_name'"
+          (click)="setOrder('students_name')"
+          class="mdl-data-table__cell--non-numeric"
+        >
+          students name <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          [class.active]="order === 'Math'"
+          (click)="setOrder('Math')"
+          class="mdl-data-table__cell--non-numeric"
+        >
+          Math<span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          [class.active]="order === 'English'"
+          (click)="setOrder('English')"
+          class="mdl-data-table__cell--non-numeric"
+        >
+          English<span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          [class.active]="order === 'History'"
+          (click)="setOrder('History')"
+          class="mdl-data-table__cell--non-numeric"
+        >
+          History<span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th
+          [class.active]="order === 'students_number'"
+          (click)="setOrder('students_number')"
+          class="mdl-data-table__cell--non-numeric"
+        >
+          students number<span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let student of getAllStudents
+            | orderBy: order:reverse:'case-insensitive'
+            | filter: searchText
+            | paginate: { itemsPerPage: 5, currentPage: p }
+        "
+      >
+        <td class="align-middle font-weight-bold">
+          {{ student.students_name }}
+        </td>
+        <td class="align-middle font-weight-bold">
+          {{ student.Math }}
+        </td>
+        <td class="align-middle font-weight-bold">
+          {{ student.English }}
+        </td>
+        <td class="align-middle font-weight-bold">
+          {{ student.History }}
+        </td>
+        <td class="align-middle font-weight-bold">
+          {{ student.students_number }}
+        </td>
+        <td>
+          <div class="float-right">
+            <button
+              class="btn btn-secondary m-1 btn-sm"
+              type="button"
+              (click)="openUpdateForm()"
+              (click)="bindingDatatoUpdatefields(student)"
+            >
+              Update
+            </button>
+
+            <button
+              class="btn btn-secondary m-1 btn-sm"
+              (click)="deletePost(student)"
+            >
+              Delete
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

@@ -1,0 +1,123 @@
+<form
+  class="form-group form-create-user border"
+  [formGroup]="updateUserForm"
+  (ngSubmit)="submit(updateUserForm.value)"
+>
+  <div class="d-flex">
+    <div formGroupName="insertNewStudent">
+      <div class="form-group">
+        <label for="students_name">Name</label>
+        <input
+          id="students_name"
+          type="text"
+          class="form-control"
+          formControlName="students_name"
+        />
+        <div
+          *ngIf="students_name.touched && students_name.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="students_name.errors.required">Name Is Required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="students_number">Student Number</label>
+        <input
+          id="students_number"
+          type="number"
+          [(ngModel)]="studentsNumberDataBinding"
+          class="form-control"
+          formControlName="students_number"
+        />
+        <div *ngIf="students_number.touched && students_number.invalid">
+          <div class="alert alert-danger">Student Number Required</div>
+        </div>
+      </div>
+    </div>
+    <div formGroupName="updateGrades" class="ml-1">
+      <div class="form-group">
+        <label for="Math">Math Grades</label>
+        <input
+          id="Math"
+          type="number"
+          class="form-control"
+          formControlName="Math"
+          max="100"
+        />
+        <div *ngIf="Math.touched && Math.invalid" class="alert alert-danger">
+          <div *ngIf="Math.errors.required">Math Grades Required</div>
+          <div *ngIf="Math.errors.max">
+            Math max should be {{ Math.errors.max.max }}
+          </div>
+          <div *ngIf="Math.errors.min">
+            Math min should be {{ Math.errors.min.min }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="English">English Grades</label>
+        <input
+          id="English"
+          type="number"
+          class="form-control"
+          formControlName="English"
+          max="100"
+        />
+        <div
+          *ngIf="English.touched && English.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="English.errors.required">English Grades Required</div>
+          <div *ngIf="English.errors.max">
+            English max should be {{ English.errors.max.max }}
+          </div>
+          <div *ngIf="English.errors.min">
+            English min should be {{ English.errors.min.min }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="History">History Grades</label>
+        <input
+          id="History"
+          type="number"
+          class="form-control"
+          formControlName="History"
+          max="100"
+        />
+        <div
+          *ngIf="History.touched && History.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="History.errors.required">History Grades Required</div>
+          <div *ngIf="History.errors.max">
+            History max should be {{ History.errors.max.max }}
+          </div>
+          <div *ngIf="History.errors.min">
+            History min should be {{ History.errors.min.min }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          id="students_number"
+          type="hidden"
+          [(ngModel)]="studentsNumberDataBinding"
+          class="form-control"
+          formControlName="students_number"
+          max="100"
+        />
+      </div>
+    </div>
+  </div>
+  <button
+    [disabled]="!updateUserForm.valid"
+    class="btn btn-secondary mx-auto d-block"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
