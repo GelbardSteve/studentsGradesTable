@@ -1,25 +1,6 @@
-.form-control {
-  border: none;
-  border-bottom: 2px solid black;
-  border-radius: 0;
-  &:focus {
-    box-shadow: 0 0 9px 2px #c7c7c7;
-  }
-}
-
-.input-group-text {
-  background: none;
-  border: none;
-  border-radius: 0;
-}
-
-.login-form {
-  width: 500px;
-}
 @media (max-width: 576px) {
-  .size-container-table {
-    margin: 0;
-    padding: 0;
+  .table-container-customize {
+    padding: 0 !important;
     width: 100%;
   }
 }
