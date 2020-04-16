@@ -7,19 +7,21 @@ import { OrderPipe } from "ngx-order-pipe";
 @Component({
   selector: "app-admin-dashboard",
   templateUrl: "./admin-dashboard.component.html",
-  styleUrls: ["./admin-dashboard.component.scss"]
+  styleUrls: ["./admin-dashboard.component.scss"],
 })
 export class AdminDashboardComponent implements OnInit {
   getAllStudents: Observable<[]>;
   p: number = 1;
   order: string = "students_name";
   reverse: boolean = false;
+  userAction = false;
+  userActionExecute: string;
 
   insertValuesToUpdateForm: any;
 
   openEditInsertForm = {
     openUpdateForm: false,
-    openInsertForm: false
+    openInsertForm: false,
   };
 
   constructor(
@@ -29,7 +31,7 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.data.getUsers().subscribe(data => {
+    this.data.getUsers().subscribe((data) => {
       this.getAllStudents = data;
     });
 
@@ -39,7 +41,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   reloadData() {
-    this.data.getUsers().subscribe(data => {
+    this.data.getUsers().subscribe((data) => {
       this.getAllStudents = data;
     });
   }
@@ -61,9 +63,13 @@ export class AdminDashboardComponent implements OnInit {
   insertUser(InsertNewUser) {
     this.data
       .postStudents2Users(InsertNewUser.insertNewStudent)
-      .subscribe(res => {
+      .subscribe((res) => {
         if (res == "successful") {
-          alert("Successful Add!!!");
+          this.userAction = true;
+          this.userActionExecute = "Add user succeed";
+          setTimeout(() => {
+            this.userAction = false;
+          }, 3000);
         }
         this.reloadData();
         this.openEditInsertForm.openInsertForm = false;
@@ -75,13 +81,27 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   deletePost(deleteUser) {
-    this.data.deleteUsers(deleteUser).subscribe(data => {
+    this.data.deleteUsers(deleteUser).subscribe((data) => {
+      if (data.succeed) {
+        this.userAction = true;
+        this.userActionExecute = "Delete user succeed";
+        setTimeout(() => {
+          this.userAction = false;
+        }, 3000);
+      }
       this.reloadData();
     });
   }
 
   update(updateValues) {
-    this.data.updateUsers(updateValues).subscribe(data => {
+    this.data.updateUsers(updateValues).subscribe((data) => {
+      if (data == "Update succeed") {
+        this.userAction = true;
+        this.userActionExecute = "Update user succeed";
+        setTimeout(() => {
+          this.userAction = false;
+        }, 3000);
+      }
       this.reloadData();
       this.openEditInsertForm.openUpdateForm = false;
     });

@@ -84,7 +84,7 @@ app.put("/grades", (req, res) => {
     sql,
     [emp.students_id, emp.Math, emp.English, emp.History, emp.students_number],
     (err, rows, fields) => {
-      if (!err) res.status(200).json("Update succedd");
+      if (!err) res.status(200).json("Update succeed");
       else console.log(err);
     }
   );
