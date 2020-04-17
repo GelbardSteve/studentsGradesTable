@@ -32,6 +32,7 @@ export class LoginStudentsChildComponent implements OnInit {
           this.userAction = true;
           this.userActionExecute = "Wrong Number";
         } else {
+          this.userAction = false;
           this.StudentsLoginInformation = res;
         }
       },
