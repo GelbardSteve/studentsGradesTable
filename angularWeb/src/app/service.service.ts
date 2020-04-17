@@ -26,7 +26,7 @@ export class ServiceService {
   }
 
   deleteUsers(student) : Observable<any> {
-    return this.http.delete(this.studentsDbUrl + "/" + student.students_id);
+    return this.http.delete(`${this.studentsDbUrl}/${student.students_id}`);
   }
 
   updateUsers(value) : Observable<any> {
@@ -41,6 +41,6 @@ export class ServiceService {
 
   // //Login The Students
   studentInformation(studentsLoginData) : Observable<any> {
-    return this.http.get(this.studentsDbUrl + "/" + studentsLoginData);
+    return this.http.get(`${this.studentsDbUrl}/${studentsLoginData}`);
   }
 }
