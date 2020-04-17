@@ -14,7 +14,7 @@ export class AdminDashboardComponent implements OnInit {
   p: number = 1;
   order: string = "students_name";
   reverse: boolean = false;
-  userAction:boolean = false;
+  userAction: boolean = false;
   userActionExecute: string;
 
   insertValuesToUpdateForm: any;
@@ -67,7 +67,7 @@ export class AdminDashboardComponent implements OnInit {
         if (res == "successful") {
           this.userAction = true;
           this.userActionExecute = "Add user succeed";
-          setTimeout(() => {
+          setInterval(() => {
             this.userAction = false;
           }, 3000);
         }
@@ -85,7 +85,7 @@ export class AdminDashboardComponent implements OnInit {
       if (data.succeed) {
         this.userAction = true;
         this.userActionExecute = "Delete user succeed";
-        setTimeout(() => {
+        setInterval(() => {
           this.userAction = false;
         }, 3000);
       }
@@ -98,7 +98,7 @@ export class AdminDashboardComponent implements OnInit {
       if (data == "Update succeed") {
         this.userAction = true;
         this.userActionExecute = "Update user succeed";
-        setTimeout(() => {
+        setInterval(() => {
           this.userAction = false;
         }, 3000);
       }
