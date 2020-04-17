@@ -1,22 +1,30 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, Validators, FormControl } from "@angular/forms";
+import { ServiceService } from "../service.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "login-admin-child",
   templateUrl: "./login-admin-child.component.html",
-  styleUrls: ["./login-admin-child.component.scss"]
+  styleUrls: ["./login-admin-child.component.scss"],
 })
 export class LoginAdminChildComponent implements OnInit {
   loginAdminForm;
-  @Output("onSubmit") onSubmit = new EventEmitter();
+  userAction: boolean = false;
+  userActionExecute: string;
+  // @Output("onSubmit") onSubmit = new EventEmitter();
 
-  constructor() {}
+  constructor(private data: ServiceService, private router: Router) {}
 
   ngOnInit() {
     this.loginAdminForm = new FormGroup({
       Name: new FormControl("", [Validators.required]),
-      Password: new FormControl("", [Validators.required])
+      Password: new FormControl("", [Validators.required]),
     });
+
+    if (localStorage.getItem("token") !== null) {
+      this.router.navigateByUrl("/admin-board");
+    }
   }
   // Direction to the properties In The Form
   get Name() {
@@ -28,7 +36,22 @@ export class LoginAdminChildComponent implements OnInit {
   }
   //
 
-  submit(formValues) {
-    this.onSubmit.emit(formValues);
+  //login The Admin And Insert A Token To Remeber Admin
+  adminSubmit(loginAdminForm) {
+    this.data.adminLogin(loginAdminForm).subscribe(
+      (res) => {
+        if (res == 200) {
+          localStorage.setItem("token", "I will remember you ;)");
+          this.router.navigateByUrl("/admin-board");
+        } else {
+          this.userAction = true;
+          this.userActionExecute = "Wrong Username Or Password";
+        }
+      },
+      (err) => {
+        if (err.status == 0) this.userAction = true;
+        this.userActionExecute = "Please check the connection to the server :/";
+      }
+    );
   }
 }

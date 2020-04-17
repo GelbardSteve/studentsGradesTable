@@ -2,9 +2,9 @@
   <button class="btn btn-dark d-block mt-3 p-2 mx-auto" (click)="openAdmin()">
     Click To Login As Admin Or Student
   </button>
+
   <login-admin-child
     *ngIf="!isAdmin"
-    (onSubmit)="adminSubmit($event)"
   ></login-admin-child>
 
   <login-students-child

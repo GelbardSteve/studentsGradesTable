@@ -8,6 +8,10 @@
       Student <i class="fas fa-user-graduate"></i>
     </h2>
 
+    <div *ngIf="userAction" class="col-12 mt-4 d-flex justify-content-center">
+      <p class="alert alert-danger">{{ userActionExecute }}</p>
+    </div>
+    
     <div>
       <div class="form-group">
         <label for="StudentNumber">Students Number</label>

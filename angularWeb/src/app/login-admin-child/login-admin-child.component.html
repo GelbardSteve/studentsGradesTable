@@ -2,9 +2,14 @@
   <form
     class="form-group login-form p-3"
     [formGroup]="loginAdminForm"
-    (ngSubmit)="submit(loginAdminForm.value)"
+    (ngSubmit)="adminSubmit(loginAdminForm.value)"
   >
     <h2 class="mb-4 text-center">Admin <i class="fas fa-users-cog"></i></h2>
+
+    <div *ngIf="userAction" class="col-12 mt-4 d-flex justify-content-center">
+      <p class="alert alert-danger">{{ userActionExecute }}</p>
+    </div>
+
     <div>
       <div class="form-group">
         <label for="Name">Admin Name</label>

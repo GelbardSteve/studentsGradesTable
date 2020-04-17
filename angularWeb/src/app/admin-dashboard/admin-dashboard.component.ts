@@ -14,7 +14,7 @@ export class AdminDashboardComponent implements OnInit {
   p: number = 1;
   order: string = "students_name";
   reverse: boolean = false;
-  userAction = false;
+  userAction:boolean = false;
   userActionExecute: string;
 
   insertValuesToUpdateForm: any;
