@@ -11,6 +11,7 @@ export class LoginStudentsChildComponent implements OnInit {
   StudentInform;
   StudentsLoginInformation;
   userAction: boolean = false;
+  showGrades: boolean = false;
   userActionExecute: string;
 
   constructor(private data: ServiceService) {}
@@ -31,9 +32,11 @@ export class LoginStudentsChildComponent implements OnInit {
         if (res == "NotFound") {
           this.userAction = true;
           this.userActionExecute = "Wrong Number";
+          this.showGrades = false;
         } else {
           this.userAction = false;
           this.StudentsLoginInformation = res;
+          this.showGrades = true;
         }
       },
       (err) => {
