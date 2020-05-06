@@ -69,7 +69,7 @@ export class AdminDashboardComponent implements OnInit {
           this.userActionExecute = "Add user succeed";
           setTimeout(() => {
             this.userAction = false;
-          }, 2000);
+          }, 5000);
         }
         this.reloadData();
         this.openEditInsertForm.openInsertForm = false;
@@ -87,7 +87,7 @@ export class AdminDashboardComponent implements OnInit {
         this.userActionExecute = "Delete user succeed";
         setTimeout(() => {
           this.userAction = false;
-        }, 2000);
+        }, 5000);
       }
       this.reloadData();
     });
@@ -100,7 +100,7 @@ export class AdminDashboardComponent implements OnInit {
         this.userActionExecute = "Update user succeed";
         setTimeout(() => {
           this.userAction = false;
-        }, 2000);
+        }, 5000);
       }
       this.reloadData();
       this.openEditInsertForm.openUpdateForm = false;
