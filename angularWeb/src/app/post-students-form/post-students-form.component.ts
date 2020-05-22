@@ -43,7 +43,7 @@ export class PostStudentsFormComponent implements OnInit {
     this.onSubmit.emit(formValues);
   }
 
-   onKeydown(event){
+  onKeydown(event) {
     event.preventDefault();
   }
 

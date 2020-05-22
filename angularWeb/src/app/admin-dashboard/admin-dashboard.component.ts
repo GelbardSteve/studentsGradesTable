@@ -124,10 +124,16 @@ export class AdminDashboardComponent implements OnInit {
   // //just try
   bindingDatatoUpdatefields(student) {
     this.insertValuesToUpdateForm = student;
-    console.log(student)
+    console.log(student);
   }
 
-  // showMoreGrades() {
-  //   this.showGrades !
-  // }
+  showMoreGrades(e, grades) {
+    if (e.target.className == "gradesOrder") {
+      e.target.innerHTML = grades;
+      e.target.className = "widthShowGreades";
+    } else if (e.target.className == "widthShowGreades") {
+      e.target.innerHTML = "Show Grades ▼";
+      e.target.className = "gradesOrder";
+    }
+  }
 }

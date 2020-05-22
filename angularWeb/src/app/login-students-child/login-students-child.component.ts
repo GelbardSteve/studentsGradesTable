@@ -46,4 +46,14 @@ export class LoginStudentsChildComponent implements OnInit {
       }
     );
   }
+
+  showMoreGrades(e, grades) {
+    if (e.target.className == "gradesOrder") {
+      e.target.innerHTML = grades;
+      e.target.className = "widthShowGreades";
+    } else if (e.target.className == "widthShowGreades") {
+      e.target.innerHTML = "Show Grades ▼";
+      e.target.className = "gradesOrder";
+    }
+  }
 }

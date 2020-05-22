@@ -63,12 +63,12 @@
         {{ student.students_name }}
       </td>
       <td
-        (click)="showStudentsGrades = !showStudentsGrades"
         *ngFor="let grad of [student.studentsGrades]"
+        (click)="showMoreGrades($event, grad)"
         class="sizeOfFont align-middle font-weight-bold"
       >
-        <span *ngIf="!showStudentsGrades">Grades ▼</span>
-        <span *ngIf="showStudentsGrades">{{ grad }}</span>
+        <span class="gradesOrder" *ngIf="!showStudentsGrades">Grades ▼</span>
+        <span class="widthShowGreades" *ngIf="showStudentsGrades">{{ grad }}</span>
       </td>
       <td class="align-middle font-weight-bold">
         {{ student.students_number }}
