@@ -89,7 +89,7 @@
           *ngFor="let grad of [student.grades.grade]"
           class="sizeOfFont align-middle font-weight-bold border-0"
         >
-          <span class="p-1" *ngIf="!showGrades">Grades ▼</span>
+          <span class="gradesOrder" *ngIf="!showGrades">Grades ▼</span>
           <span class="widthShowGreades" *ngIf="showGrades">{{ grad }}</span>
         </td>
         <td class="align-middle font-weight-bold">

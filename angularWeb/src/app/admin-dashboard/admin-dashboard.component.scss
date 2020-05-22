@@ -4,8 +4,18 @@
   }
 }
 
+@media (max-width: 654px) {
+  .gradesOrder {
+    padding: 1.5rem !important;
+  }
+}
+
 .widthShowGreades {
   width: 115px;
+}
+
+.gradesOrder {
+  padding: 0.25rem;
 }
 
 .sizeOfFont {
