@@ -16,21 +16,19 @@ export class UpdateStudentFormComponent implements OnInit {
   ngOnInit() {
     this.updateUserForm = new FormGroup({
       students_id: new FormControl("", [Validators.required]),
-      Math: new FormControl("", [
-        Validators.required,
-        Validators.max(100),
-        Validators.min(0)
+      studentsGrades: new FormControl("", [
+        Validators.required
       ]),
-      English: new FormControl("", [
-        Validators.required,
-        Validators.max(100),
-        Validators.min(0)
-      ]),
-      History: new FormControl("", [
-        Validators.required,
-        Validators.max(100),
-        Validators.min(0)
-      ])
+      // English: new FormControl("", [
+      //   Validators.required
+      // ]),
+
+      // students_number: new FormControl("", []),
+      // History: new FormControl("", [
+      //   Validators.required,
+      //   Validators.max(100),
+      //   Validators.min(0)
+      // ])
     });
   }
   // Direction to the properties
@@ -38,18 +36,27 @@ export class UpdateStudentFormComponent implements OnInit {
     return this.updateUserForm.get("students_id");
   }
 
-  get Math() {
-    return this.updateUserForm.get("Math");
+  get studentsGrades() {
+    return this.updateUserForm.get("studentsGrades");
   }
 
-  get English() {
-    return this.updateUserForm.get("English");
-  }
-  get History() {
-    return this.updateUserForm.get("History");
-  }
+  // get English() {
+  //   return this.updateUserForm.get("English");
+  // }
+
+  // get Students_number() {
+  //   return this.updateUserForm.get("Students_number");
+  // }
+  // get History() {
+  //   return this.updateUserForm.get("History");
+  // }
   //
   submit(updateFormValues) {
+    console.log(this.insertValuesUpdate)
     this.onSubmit.emit(updateFormValues);
+  }
+
+  onKeydown(event){
+    event.preventDefault();
   }
 }

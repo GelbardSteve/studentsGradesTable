@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: students
+-- Host: 127.0.0.1    Database: students
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -24,12 +24,10 @@ DROP TABLE IF EXISTS `grades`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `grades` (
   `students_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Math` int(100) DEFAULT NULL,
-  `English` int(100) DEFAULT NULL,
-  `History` int(100) DEFAULT NULL,
+  `studentsGrades` varchar(255) DEFAULT NULL,
   `students_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`students_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +36,7 @@ CREATE TABLE `grades` (
 
 LOCK TABLES `grades` WRITE;
 /*!40000 ALTER TABLE `grades` DISABLE KEYS */;
-INSERT INTO `grades` VALUES (11,100,100,99,2010),(12,90,95,90,2011),(14,90,90,80,2013),(15,90,90,90,2014),(18,100,100,100,20106),(20,100,100,100,20107),(23,100,100,100,2018);
+INSERT INTO `grades` VALUES (132,'Math: 98, Math: 98, Math: 55',10),(133,'History: 100, Math: 100, English: 80, History: 100',20),(134,'History: 100, Math: 100, English: 50',30),(135,'History: 100, Math: 100',40),(136,'Math: 100, English: 98',50),(137,'History: 100, English: 98',60),(138,'History: 100',70);
 /*!40000 ALTER TABLE `grades` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-07 12:50:07
+-- Dump completed on 2020-05-22 17:29:43

@@ -12,10 +12,10 @@ var mysqlConnection = mysql.createConnection({
   user: "root",
   password: "La44w0rd",
   database: "students",
-  multipleStatements: true
+  multipleStatements: true,
 });
 
-mysqlConnection.connect(err => {
+mysqlConnection.connect((err) => {
   if (!err) {
     console.log("DB great");
   } else {
@@ -34,7 +34,31 @@ app.get("/students2", (req, res) => {
     students2.students_number = grades.students_number;",
     (err, rows, fields) => {
       if (!err) {
-        res.send(rows);
+        let runOnResponse = "";
+        function sortTheJson() {
+          return new Promise(function (resolve) {
+            rows.forEach((itm) => {
+              runOnResponse += ` {
+  "students_id": ${itm.students_id},
+  "students_name": "${itm.students_name}",
+  "students_number": ${itm.students_number},
+    "grades": {
+      "grade": "${itm.studentsGrades}"
+    }
+  },
+`;
+            });
+            resolve();
+          });
+        }
+
+        async function returnSortJson() {
+          await sortTheJson();
+          let jRemoveLastComma = runOnResponse.replace(/,\s*$/, "");
+          let jsonResponse = "[" + jRemoveLastComma + "]";
+          res.send(jsonResponse);
+        }
+        returnSortJson();
       } else {
         console.log(err);
       }
@@ -62,11 +86,11 @@ app.post("/students2", (req, res) => {
 app.post("/grades", (req, res) => {
   let emp = req.body;
   var sql =
-    "SET @students_id = ?; SET @Math = ?; SET @English = ?; SET @History = ?; SET @students_number = ?;\
-    CALL gradesAddUpdate(@students_id, @Math, @English, @History, @students_number);";
+    "SET @students_id = ?; SET @studentsGrades = ?; SET @students_number = ?;\
+    CALL gradesAddUpdate(@students_id, @studentsGrades, @students_number);";
   mysqlConnection.query(
     sql,
-    [emp.students_id, emp.Math, emp.English, emp.History, emp.students_number],
+    [emp.students_id, emp.studentsGrades, emp.students_number],
     (err, rows, fields) => {
       if (!err) res.status(200).json("successful");
       else console.log(err);
@@ -78,11 +102,11 @@ app.post("/grades", (req, res) => {
 app.put("/grades", (req, res) => {
   let emp = req.body;
   var sql =
-    "SET @students_id = ?; SET @Math = ?; SET @English = ?; SET @History = ?; SET @students_number = ?; \
-     CALL gradesAddUpdate(@students_id, @Math, @English, @History, @students_number);";
+    "SET @students_id = ?; SET @studentsGrades = ?; SET @students_number = ?; \
+     CALL gradesAddUpdate(@students_id, @studentsGrades, @students_number);";
   mysqlConnection.query(
     sql,
-    [emp.students_id, emp.Math, emp.English, emp.History, emp.students_number],
+    [emp.students_id, emp.studentsGrades, emp.students_number],
     (err, rows, fields) => {
       if (!err) res.status(200).json("Update succeed");
       else console.log(err);

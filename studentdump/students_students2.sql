@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: students
+-- Host: 127.0.0.1    Database: students
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -27,7 +27,7 @@ CREATE TABLE `students2` (
   `students_name` varchar(45) DEFAULT NULL,
   `students_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`students_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `students2` (
 
 LOCK TABLES `students2` WRITE;
 /*!40000 ALTER TABLE `students2` DISABLE KEYS */;
-INSERT INTO `students2` VALUES (13,'students1',2010),(14,'students2',2011),(16,'students4',2013),(17,'students5',2014),(20,'students6',20106),(22,'students7',20107),(25,'students8',2018);
+INSERT INTO `students2` VALUES (140,'Students1',10),(141,'students2',20),(142,'students3',30),(143,'students4',40),(144,'students5',50),(145,'students6',60),(146,'students7',70);
 /*!40000 ALTER TABLE `students2` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-07 12:50:07
+-- Dump completed on 2020-05-22 17:29:43

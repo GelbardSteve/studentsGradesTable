@@ -11,7 +11,7 @@
     <div *ngIf="userAction" class="col-12 mt-4 d-flex justify-content-center">
       <p class="alert alert-danger">{{ userActionExecute }}</p>
     </div>
-    
+
     <div>
       <div class="form-group">
         <label for="StudentNumber">Students Number</label>
@@ -47,15 +47,13 @@
 
 <table
   *ngIf="showGrades"
-  class="table table-container-customize table-responsive-sm table-striped table-bordered table-dark col-md-5 mx-auto"
-  style="width: 100%"
+  class="table text-center table-container-customize table-striped table-bordered table-dark col-md-5 mx-auto"
+  style="width: 100%;"
 >
   <thead>
     <tr class="bg-info">
       <th>Student Name</th>
       <th>Math</th>
-      <th>English</th>
-      <th>History</th>
       <th>Student Number</th>
     </tr>
   </thead>
@@ -64,14 +62,13 @@
       <td class="align-middle font-weight-bold">
         {{ student.students_name }}
       </td>
-      <td class="align-middle font-weight-bold">
-        {{ student.Math }}
-      </td>
-      <td class="align-middle font-weight-bold">
-        {{ student.English }}
-      </td>
-      <td class="align-middle font-weight-bold">
-        {{ student.History }}
+      <td
+        (click)="showStudentsGrades = !showStudentsGrades"
+        *ngFor="let grad of [student.studentsGrades]"
+        class="sizeOfFont align-middle font-weight-bold"
+      >
+        <span *ngIf="!showStudentsGrades">Grades ▼</span>
+        <span *ngIf="showStudentsGrades">{{ grad }}</span>
       </td>
       <td class="align-middle font-weight-bold">
         {{ student.students_number }}

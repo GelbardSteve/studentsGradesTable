@@ -16,7 +16,7 @@ export class AdminDashboardComponent implements OnInit {
   reverse: boolean = false;
   userAction: boolean = false;
   userActionExecute: string;
-
+  showGrades: boolean = false;
   insertValuesToUpdateForm: any;
 
   openEditInsertForm = {
@@ -69,7 +69,7 @@ export class AdminDashboardComponent implements OnInit {
           this.userActionExecute = "Add user succeed";
           setTimeout(() => {
             this.userAction = false;
-          }, 5000);
+          }, 1300);
         }
         this.reloadData();
         this.openEditInsertForm.openInsertForm = false;
@@ -87,7 +87,7 @@ export class AdminDashboardComponent implements OnInit {
         this.userActionExecute = "Delete user succeed";
         setTimeout(() => {
           this.userAction = false;
-        }, 5000);
+        }, 1300);
       }
       this.reloadData();
     });
@@ -100,7 +100,7 @@ export class AdminDashboardComponent implements OnInit {
         this.userActionExecute = "Update user succeed";
         setTimeout(() => {
           this.userAction = false;
-        }, 5000);
+        }, 1300);
       }
       this.reloadData();
       this.openEditInsertForm.openUpdateForm = false;
@@ -124,5 +124,10 @@ export class AdminDashboardComponent implements OnInit {
   // //just try
   bindingDatatoUpdatefields(student) {
     this.insertValuesToUpdateForm = student;
+    console.log(student)
   }
+
+  // showMoreGrades() {
+  //   this.showGrades !
+  // }
 }

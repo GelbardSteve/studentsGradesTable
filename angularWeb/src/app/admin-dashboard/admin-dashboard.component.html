@@ -3,7 +3,6 @@
 </nav>
 
 <div class="container col-12 col-md-8 mt-3 px-0 size-container-table">
-
   <div class="d-flex justify-content-between mt-2">
     <div>
       <button
@@ -30,7 +29,9 @@
   </div>
 
   <div *ngIf="userAction">
-    <p class="float-right rounded p-4 bg-success text-white">{{userActionExecute}}</p>
+    <p class="float-right rounded p-4 bg-success text-white">
+      {{ userActionExecute }}
+    </p>
   </div>
 
   <update-student-form
@@ -39,8 +40,8 @@
     (onSubmit)="update($event)"
   ></update-student-form>
   <table
-    class="table table-responsive-sm table-striped table-bordered table-dark"
-    style="width: 100%"
+    class="table text-center table-responsive-sm table-striped table-bordered table-dark"
+    style="width: 100%;"
   >
     <thead>
       <tr class="bg-info">
@@ -53,27 +54,11 @@
           ><span [hidden]="!reverse">▲</span>
         </th>
         <th
-          [class.active]="order === 'Math'"
-          (click)="setOrder('Math')"
+          [class.active]="order === 'studentsGrades'"
+          (click)="setOrder('studentsGrades')"
           class="mdl-data-table__cell--non-numeric"
         >
-          Math<span [hidden]="reverse">▼</span
-          ><span [hidden]="!reverse">▲</span>
-        </th>
-        <th
-          [class.active]="order === 'English'"
-          (click)="setOrder('English')"
-          class="mdl-data-table__cell--non-numeric"
-        >
-          English<span [hidden]="reverse">▼</span
-          ><span [hidden]="!reverse">▲</span>
-        </th>
-        <th
-          [class.active]="order === 'History'"
-          (click)="setOrder('History')"
-          class="mdl-data-table__cell--non-numeric"
-        >
-          History<span [hidden]="reverse">▼</span
+          studentsGrades<span [hidden]="reverse">▼</span
           ><span [hidden]="!reverse">▲</span>
         </th>
         <th
@@ -99,14 +84,13 @@
         <td class="align-middle font-weight-bold">
           {{ student.students_name }}
         </td>
-        <td class="align-middle font-weight-bold">
-          {{ student.Math }}
-        </td>
-        <td class="align-middle font-weight-bold">
-          {{ student.English }}
-        </td>
-        <td class="align-middle font-weight-bold">
-          {{ student.History }}
+        <td
+          (click)="showGrades = !showGrades"
+          *ngFor="let grad of [student.grades.grade]"
+          class="sizeOfFont align-middle font-weight-bold border-0"
+        >
+          <span class="p-1" *ngIf="!showGrades">Grades ▼</span>
+          <span class="widthShowGreades" *ngIf="showGrades">{{ grad }}</span>
         </td>
         <td class="align-middle font-weight-bold">
           {{ student.students_number }}

@@ -4,7 +4,7 @@ import { FormGroup, Validators, FormControl } from "@angular/forms";
 @Component({
   selector: "post-students-form",
   templateUrl: "./post-students-form.component.html",
-  styleUrls: ["./post-students-form.component.scss"]
+  styleUrls: ["./post-students-form.component.scss"],
 })
 export class PostStudentsFormComponent implements OnInit {
   updateUserForm;
@@ -17,26 +17,12 @@ export class PostStudentsFormComponent implements OnInit {
     this.updateUserForm = new FormGroup({
       insertNewStudent: new FormGroup({
         students_name: new FormControl("", [Validators.required]),
-        students_number: new FormControl("", [Validators.required])
+        students_number: new FormControl("", [Validators.required]),
       }),
       updateGrades: new FormGroup({
-        Math: new FormControl("", [
-          Validators.required,
-          Validators.max(100),
-          Validators.min(0)
-        ]),
-        English: new FormControl("", [
-          Validators.required,
-          Validators.max(100),
-          Validators.min(0)
-        ]),
-        History: new FormControl("", [
-          Validators.required,
-          Validators.max(100),
-          Validators.min(0)
-        ]),
-        students_number: new FormControl("", [Validators.required])
-      })
+        studentsGrades: new FormControl("", [Validators.required]),
+        students_number: new FormControl("", [Validators.required]),
+      }),
     });
   }
   // Direction to the properties
@@ -48,17 +34,10 @@ export class PostStudentsFormComponent implements OnInit {
     return this.updateUserForm.get("insertNewStudent.students_number");
   }
   //update grades
-  get Math() {
-    return this.updateUserForm.get("updateGrades.Math");
+  get studentsGrades() {
+    return this.updateUserForm.get("updateGrades.studentsGrades");
   }
 
-  get English() {
-    return this.updateUserForm.get("updateGrades.English");
-  }
-
-  get History() {
-    return this.updateUserForm.get("updateGrades.History");
-  }
   //
   submit(formValues) {
     this.onSubmit.emit(formValues);

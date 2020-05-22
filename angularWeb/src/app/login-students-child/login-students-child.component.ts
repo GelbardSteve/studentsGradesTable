@@ -13,6 +13,7 @@ export class LoginStudentsChildComponent implements OnInit {
   userAction: boolean = false;
   showGrades: boolean = false;
   userActionExecute: string;
+  showStudentsGrades: boolean = false;
 
   constructor(private data: ServiceService) {}
 

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: students
+-- Host: 127.0.0.1    Database: students
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -30,23 +30,19 @@
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gradesAddUpdate`(
 IN _students_id INT,
-IN _Math int,
-IN _English int,
-IN _History int,
+IN _studentsGrades VARCHAR(100),
 IN _students_number int
 )
 BEGIN
 	IF ISNULL(_students_id) THEN
-		INSERT INTO grades (Math, English, History, students_number)
-        VALUES (_Math, _English, _History, _students_number);
+		INSERT INTO grades (studentsGrades, students_number)
+        VALUES (_studentsGrades, _students_number);
         
         SET _students_id = LAST_INSERT_ID();
 	ELSE
 		UPDATE students.grades
         SET
-        Math = _Math,
-        English = _English,
-        History = _History
+        studentsGrades = _studentsGrades
         WHERE students_id = _students_id;
 	END IF;
     
@@ -97,4 +93,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-07 12:50:07
+-- Dump completed on 2020-05-22 17:29:44

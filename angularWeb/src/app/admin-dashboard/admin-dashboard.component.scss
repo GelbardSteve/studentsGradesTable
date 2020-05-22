@@ -1,7 +1,19 @@
 @media (max-width: 560px) {
   .size-container-table {
-     overflow: auto;
+    overflow: auto;
   }
+}
+
+.widthShowGreades {
+  width: 115px;
+}
+
+.sizeOfFont {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 thead th {

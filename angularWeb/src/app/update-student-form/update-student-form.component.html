@@ -13,74 +13,24 @@
         class="form-control"
         formControlName="students_id"
       />
-      <div
-        *ngIf="students_id.touched && students_id.invalid"
-        class="alert alert-danger"
-      >
-        <div *ngIf="students_id.errors.required">Id required</div>
-      </div>
     </div>
-    <div class="form-group m-1">
-      <label for="Math">Math</label>
-      <input
-        [(ngModel)]="insertValuesUpdate.Math"
-        id="Math"
-        type="number"
-        class="form-control"
-        formControlName="Math"
-      />
-      <div *ngIf="Math.touched && Math.invalid" class="alert alert-danger">
-        <div *ngIf="Math.errors.required">Math Grades Required</div>
-        <div *ngIf="Math.errors.max">
-          Math max should be {{ Math.errors.max.max }}
-        </div>
-        <div *ngIf="Math.errors.min">
-          Math min should be {{ Math.errors.min.min }}
-        </div>
-      </div>
-    </div>
-    <div class="form-group m-1">
-      <label for="English">English</label>
-      <input
-        [(ngModel)]="insertValuesUpdate.English"
-        id="English"
-        type="number"
-        class="form-control"
-        formControlName="English"
-      />
-      <div
-        *ngIf="English.touched && English.invalid"
-        class="alert alert-danger"
-      >
-        <div *ngIf="English.errors.required">English Grades Required</div>
-        <div *ngIf="English.errors.max">
-          English max should be {{ English.errors.max.max }}
-        </div>
-        <div *ngIf="English.errors.min">
-          English min should be {{ English.errors.min.min }}
-        </div>
-      </div>
-    </div>
-    <div class="form-group m-1">
-      <label for="History">History</label>
-      <input
-        [(ngModel)]="insertValuesUpdate.History"
-        id="History"
-        type="number"
-        class="form-control"
-        formControlName="History"
-      />
-      <div
-        *ngIf="History.touched && History.invalid"
-        class="alert alert-danger"
-      >
-        <div *ngIf="History.errors.required">History Grades Required</div>
-        <div *ngIf="History.errors.max">
-          History max should be {{ History.errors.max.max }}
-        </div>
-        <div *ngIf="History.errors.min">
-          History min should be {{ History.errors.min.min }}
-        </div>
+  </div>
+
+  <div class="form-group m-1 widthHight">
+    <label for="studentsGrades">studentsGrades</label>
+    <textarea
+      [(ngModel)]="insertValuesUpdate.grades.grade"
+      id="studentsGrades"
+      (keydown.enter)="onKeydown($event)"
+      class="form-control"
+      formControlName="studentsGrades"
+    ></textarea>
+    <div
+      *ngIf="studentsGrades.touched && studentsGrades.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="studentsGrades.errors.required">
+        studentsGrades Grades Required
       </div>
     </div>
   </div>
