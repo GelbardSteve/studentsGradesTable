@@ -40,17 +40,6 @@ export class UpdateStudentFormComponent implements OnInit {
     return this.updateUserForm.get("studentsGrades");
   }
 
-  // get English() {
-  //   return this.updateUserForm.get("English");
-  // }
-
-  // get Students_number() {
-  //   return this.updateUserForm.get("Students_number");
-  // }
-  // get History() {
-  //   return this.updateUserForm.get("History");
-  // }
-  //
   submit(updateFormValues) {
     console.log(this.insertValuesUpdate)
     this.onSubmit.emit(updateFormValues);

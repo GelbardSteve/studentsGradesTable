@@ -41,7 +41,10 @@ export class PostStudentsFormComponent implements OnInit {
   //
   submit(formValues) {
     this.onSubmit.emit(formValues);
-    // console.log(formValues);
-    // console.log(formValues.updateGrades);
   }
+
+   onKeydown(event){
+    event.preventDefault();
+  }
+
 }

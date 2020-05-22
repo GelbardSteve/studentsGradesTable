@@ -39,6 +39,7 @@
         <label for="studentsGrades">studentsGrades Grades</label>
         <textarea
           id="studentsGrades"
+          (keydown.enter)="onKeydown($event)"
           class="form-control heightOfField"
           formControlName="studentsGrades"
           max="100"
