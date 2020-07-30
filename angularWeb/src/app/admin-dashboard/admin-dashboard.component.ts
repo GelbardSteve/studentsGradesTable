@@ -18,6 +18,11 @@ export class AdminDashboardComponent implements OnInit {
   userActionExecute: string;
   showGrades: boolean = false;
   insertValuesToUpdateForm: any;
+  name = 'Angular 6';
+  status: any[];
+  formula:string = "Formula 1";
+  data: any[];
+ 
 
   openEditInsertForm = {
     openUpdateForm: false,
@@ -25,14 +30,27 @@ export class AdminDashboardComponent implements OnInit {
   };
 
   constructor(
-    private data: ServiceService,
+    private dataS: ServiceService,
     private router: Router,
     private orderPipe: OrderPipe
   ) {}
 
+  options = {
+    fieldSeparator: ',',
+    quoteStrings: '"',
+    decimalseparator: '.',
+    headers: [ 
+    'students_id', 
+    'students_name', 
+    'students_number',
+    'grades'],
+    keys: []
+  };
+  
   ngOnInit() {
-    this.data.getUsers().subscribe((data) => {
+    this.dataS.getUsers().subscribe((data) => {
       this.getAllStudents = data;
+      this.data = data
     });
 
     if (localStorage.getItem("token") == null) {
@@ -40,8 +58,12 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
+  exportToCSV() {
+
+  }
+  
   reloadData() {
-    this.data.getUsers().subscribe((data) => {
+    this.dataS.getUsers().subscribe((data) => {
       this.getAllStudents = data;
     });
   }
@@ -61,7 +83,7 @@ export class AdminDashboardComponent implements OnInit {
 
   // //Insert Delete Update students
   insertUser(InsertNewUser) {
-    this.data
+    this.dataS
       .postStudents2Users(InsertNewUser.insertNewStudent)
       .subscribe((res) => {
         if (res == "successful") {
@@ -77,11 +99,11 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   insertGrades(insertGrades) {
-    this.data.postGrades(insertGrades.updateGrades).subscribe();
+    this.dataS.postGrades(insertGrades.updateGrades).subscribe();
   }
 
   deletePost(deleteUser) {
-    this.data.deleteUsers(deleteUser).subscribe((data) => {
+    this.dataS.deleteUsers(deleteUser).subscribe((data) => {
       if (data.succeed) {
         this.userAction = true;
         this.userActionExecute = "Delete user succeed";
@@ -94,7 +116,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   update(updateValues) {
-    this.data.updateUsers(updateValues).subscribe((data) => {
+    this.dataS.updateUsers(updateValues).subscribe((data) => {
       if (data == "Update succeed") {
         this.userAction = true;
         this.userActionExecute = "Update user succeed";

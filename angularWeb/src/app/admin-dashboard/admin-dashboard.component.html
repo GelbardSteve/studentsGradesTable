@@ -2,6 +2,9 @@
   <button class="btn btn-danger my-sm-0" (click)="logout()">Logout</button>
 </nav>
 
+<angular2csv [data]="data" filename="test" [options]="options"></angular2csv>
+
+
 <div class="container col-12 col-md-8 mt-3 px-0 size-container-table">
   <div class="d-flex justify-content-between mt-2">
     <div>
@@ -85,7 +88,7 @@
           {{ student.students_name }}
         </td>
         <td
-          *ngFor="let grad of [student.grades.grade]"
+          *ngFor="let grad of [student.studentsGrades]"
           (click)="showMoreGrades($event, grad)"
           class="sizeOfFont align-middle font-weight-bold border-0"
         >

@@ -14,6 +14,7 @@ import { LoginParentDashboardComponent } from './login-parent-dashboard/login-pa
 import { LoginAdminChildComponent } from './login-admin-child/login-admin-child.component';
 import { LoginStudentsChildComponent } from './login-students-child/login-students-child.component';
 import { UpdateStudentFormComponent } from './update-student-form/update-student-form.component';
+import { Angular2CsvModule } from 'angular2-csv';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UpdateStudentFormComponent } from './update-student-form/update-student
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    OrderModule
+    OrderModule,
+    Angular2CsvModule
   ],
   providers: [],
   bootstrap: [AppComponent]
