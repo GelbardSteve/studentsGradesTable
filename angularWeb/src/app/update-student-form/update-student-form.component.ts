@@ -19,16 +19,6 @@ export class UpdateStudentFormComponent implements OnInit {
       studentsGrades: new FormControl("", [
         Validators.required
       ]),
-      // English: new FormControl("", [
-      //   Validators.required
-      // ]),
-
-      // students_number: new FormControl("", []),
-      // History: new FormControl("", [
-      //   Validators.required,
-      //   Validators.max(100),
-      //   Validators.min(0)
-      // ])
     });
   }
   // Direction to the properties
