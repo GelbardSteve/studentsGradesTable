@@ -18,11 +18,10 @@ export class AdminDashboardComponent implements OnInit {
   userActionExecute: string;
   showGrades: boolean = false;
   insertValuesToUpdateForm: any;
-  name = 'Angular 6';
+  name = "Angular 6";
   status: any[];
-  formula:string = "Formula 1";
+  formula: string = "Formula 1";
   data: any[];
- 
 
   openEditInsertForm = {
     openUpdateForm: false,
@@ -36,21 +35,20 @@ export class AdminDashboardComponent implements OnInit {
   ) {}
 
   options = {
-    fieldSeparator: ',',
+    fieldSeparator: ",",
     quoteStrings: '"',
-    decimalseparator: '.',
-    headers: [ 
-    'students_id', 
-    'students_name', 
-    'students_number',
-    'grades'],
-    keys: []
+    decimalseparator: ".",
+    headers: ["students_id", "students_name", "students_number", "grades"],
+    showTitle: false,
+    useBom: false,
+    removeNewLines: false,
+    keys: [],
   };
-  
+
   ngOnInit() {
     this.dataS.getUsers().subscribe((data) => {
       this.getAllStudents = data;
-      this.data = data
+      this.data = data;
     });
 
     if (localStorage.getItem("token") == null) {
@@ -58,10 +56,7 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  exportToCSV() {
 
-  }
-  
   reloadData() {
     this.dataS.getUsers().subscribe((data) => {
       this.getAllStudents = data;
