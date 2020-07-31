@@ -21,7 +21,7 @@ export class AdminDashboardComponent implements OnInit {
   name = "Angular 6";
   status: any[];
   formula: string = "Formula 1";
-  data: any[];
+  data: any;
 
   openEditInsertForm = {
     openUpdateForm: false,
@@ -42,20 +42,19 @@ export class AdminDashboardComponent implements OnInit {
     showTitle: false,
     useBom: false,
     removeNewLines: false,
-    keys: [],
+    keys: ["students_id", "students_name", "students_number", "studentsGrades"],
   };
 
   ngOnInit() {
-    this.dataS.getUsers().subscribe((data) => {
-      this.getAllStudents = data;
-      this.data = data;
+    this.dataS.getUsers().subscribe((dataS) => {
+      this.getAllStudents = dataS;
+      this.data = dataS;
     });
 
     if (localStorage.getItem("token") == null) {
       this.router.navigateByUrl("/");
     }
   }
-
 
   reloadData() {
     this.dataS.getUsers().subscribe((data) => {
