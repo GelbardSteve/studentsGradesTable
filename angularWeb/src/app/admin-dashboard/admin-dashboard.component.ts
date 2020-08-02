@@ -57,8 +57,9 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   reloadData() {
-    this.dataS.getUsers().subscribe((data) => {
-      this.getAllStudents = data;
+    this.dataS.getUsers().subscribe((dataS) => {
+      this.getAllStudents = dataS;
+      this.data = dataS;
     });
   }
 
