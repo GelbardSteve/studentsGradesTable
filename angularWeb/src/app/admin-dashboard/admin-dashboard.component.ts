@@ -81,6 +81,7 @@ export class AdminDashboardComponent implements OnInit {
     this.dataS
       .postStudents2Users(InsertNewUser.insertNewStudent)
       .subscribe((res) => {
+        console.log(res)
         if (res == "successful") {
           this.userAction = true;
           this.userActionExecute = "Add user succeed";

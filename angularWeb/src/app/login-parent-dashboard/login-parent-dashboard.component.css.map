@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "login-parent-dashboard.component.scss"
+    ],
+    "names": [],
+    "file": "login-parent-dashboard.component.css"
+}

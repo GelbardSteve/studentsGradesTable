@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,CAAC;EACP,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,cAAc,CAAC;EACb,MAAM,EAAE,KAAK;CACd;;AAED,MAAM,EAAE,SAAS,EAAE,MAAM;EACvB,AAAA,iBAAiB,CAAC;IAChB,QAAQ,EAAE,QAAQ;IAClB,IAAI,EAAE,CAAC;IACP,UAAU,EAAE,IAAI;IAChB,OAAO,EAAE,IAAI;GACd",
+    "sources": [
+        "post-students-form.component.scss"
+    ],
+    "names": [],
+    "file": "post-students-form.component.css"
+}

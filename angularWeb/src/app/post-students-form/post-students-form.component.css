@@ -1,0 +1,21 @@
+.form-create-user {
+  position: absolute;
+  left: 0;
+  background: #fff;
+  padding: 15px;
+  margin-top: 16px;
+}
+
+.heightOfField {
+  height: 124px;
+}
+
+@media (max-width: 1850px) {
+  .form-create-user {
+    position: absolute;
+    left: 0;
+    background: #fff;
+    padding: 15px;
+  }
+}
+/*# sourceMappingURL=post-students-form.component.css.map */

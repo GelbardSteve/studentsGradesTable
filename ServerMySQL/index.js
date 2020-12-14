@@ -1,13 +1,13 @@
 const mysql = require("mysql");
 const express = require("express");
-var app = express();
+const app = express();
 const cors = require("cors");
 const getFunc = require("./exportsFunctions");
 
 app.use(cors());
 app.use(express.json());
 
-var mysqlConnection = mysql.createConnection({
+const mysqlConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "La44w0rd",

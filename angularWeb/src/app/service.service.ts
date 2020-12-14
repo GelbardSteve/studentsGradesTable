@@ -22,6 +22,7 @@ export class ServiceService {
   }
 
   postGrades(updateValues) : Observable<any> {
+    console.log(updateValues)
     return this.http.post(this.gradesDbUrl, updateValues);
   }
 

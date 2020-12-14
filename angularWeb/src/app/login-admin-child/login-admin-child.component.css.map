@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "login-admin-child.component.scss"
+    ],
+    "names": [],
+    "file": "login-admin-child.component.css"
+}
